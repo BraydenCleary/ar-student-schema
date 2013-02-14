@@ -19,6 +19,8 @@ describe "create table with correct schema" do
     }
 
     ActiveRecord::Base.connection.columns(:students).each do |col|
+      puts "column types" + col.type.to_s
+      puts "here!" if expected[col.type].nil?
       expected[col.type].include?(col.name).should be_true
     end
   end

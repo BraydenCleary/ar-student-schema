@@ -20,7 +20,7 @@ class Student < ActiveRecord::Base
 	validates :age, :numericality => { :greater_than => 5 }
 	validates_with PhoneValidator
 
-	def name
+	def full_name
 		self.first_name + " " + self.last_name
 	end
 

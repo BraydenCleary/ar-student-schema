@@ -4,19 +4,19 @@
 
 # puts Teacher.all.each { |teacher| puts teacher.email }
 
-# describe Teacher, "validations" do
+describe Teacher, "validations" do
 
 
-# 	it "should not accept duplicate emails" do
-#     ["joe@example.com", "joe@example.com", "bugs@devbootcamp.com"].each do |address|
-#     	@teacher = Teacher.new
-#       @teacher.email = address
-#       @teacher.save
-#       puts @teacher.object_id
-#       @teacher.should_not be_valid
-#     end
-#   end
-# end
+	it "should not accept duplicate emails" do
+    ["joe@example.com", "joe@example.com", "bugs@devbootcamp.com"].each do |address|
+    	@teacher = Teacher.new
+      @teacher.email = address
+      @teacher.save
+      puts @teacher.object_id
+      @teacher.should_not be_valid
+    end
+  end
+end
 
 require_relative '../app/models/teacher'
 require_relative '../app/models/student.rb'

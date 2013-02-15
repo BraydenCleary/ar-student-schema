@@ -2,8 +2,8 @@ require_relative '../../db/config'
 
 class PhoneValidator < ActiveModel::Validator
   def validate(record)
-    unless record.phone.scan(/\d/).length > 10
-      record.errors[:name] << 'Need a name starting with X please!'
+    unless record.phone.scan(/\d/).length >= 10
+      record.errors[:phone] << 'Invalid Phone Number!'
     end
   end
 end
@@ -11,6 +11,8 @@ end
 
 
 class Student < ActiveRecord::Base
+	belongs_to :teacher
+
 	include ActiveModel::Validations
 
 	validates :email, :uniqueness => true
@@ -25,12 +27,6 @@ class Student < ActiveRecord::Base
 
 	def age
 		Date.today.year - self.birthday.year - ((Date.today.month > self.birthday.month || (Date.today.month == self.birthday.month && Date.today.day >= self.birthday.day)) ? 0 : 1)
-	end
-
-	private
-
-	def validate_phone
-		self.phone.scan(/\d/).length > 10
 	end
 
 end

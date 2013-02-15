@@ -1,9 +1,8 @@
-class Teacher < ActiveRecord::Base
+require_relative '../../db/config'
 
-	def initialize
-		@name = args[:name]
-		@email = args[:email]
-		@phone = args[:phone]
-	end
+class Teacher < ActiveRecord::Base
+	has_many :students
+
+	validates :email, :uniqueness => true
 
 end

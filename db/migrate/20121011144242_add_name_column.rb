@@ -5,6 +5,7 @@ class AddNameColumn < ActiveRecord::Migration
 
 	def up
 		add_column :students, :name, :string
+		add_column :students, :address, :string
 		Student.all.each do |student|
 			student.name = student.first_name + " " + student.last_name
 			student.save
@@ -21,6 +22,7 @@ class AddNameColumn < ActiveRecord::Migration
 			student.last_name  = student.name.split ' '[1]
 			student.save
 		end
+		remove_column :students, :address
 		remove_column :students, :name
 	end
 

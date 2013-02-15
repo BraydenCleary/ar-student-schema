@@ -14,3 +14,5 @@ StudentsTeacher.create({teacher_id: 3, student_id: 1})
 puts Student.find(1).teachers
 puts Teacher.find(1).students
 #many to many relationship is working!
+
+puts Student.where(:name => 'Karim')

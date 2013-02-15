@@ -8,10 +8,9 @@ class PhoneValidator < ActiveModel::Validator
   end
 end
  
-
-
 class Student < ActiveRecord::Base
-	belongs_to :teacher
+	has_many :students_teachers
+	has_many :teachers, :through => :students_teachers
 
 	include ActiveModel::Validations
 
